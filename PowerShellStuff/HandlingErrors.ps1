@@ -1,3 +1,4 @@
+
 #Docs are great! https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-exceptions?view=powershell-7.1
 
 #Region Regular Error
