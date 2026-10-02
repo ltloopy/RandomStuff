@@ -1,0 +1,227 @@
+# Living Room Android TV remote card (Android Debug Bridge integration)
+# Dashboard: /lovelace/living-room
+# Paste into: Edit dashboard > Add card > Manual
+# Uses only built-in cards. No HACS cards are necessary.
+# If your entity ID is different, replace every
+# media_player.livingroom_tv_androidtv_adb with your entity ID.
+type: vertical-stack
+title: Living Room TV
+cards:
+  # Now playing, power and media buttons
+  - type: media-control
+    entity: media_player.livingroom_tv_androidtv_adb
+
+  # Power, volume and mute
+  - type: grid
+    columns: 4
+    square: false
+    cards:
+      - type: button
+        name: Power
+        icon: mdi:power
+        tap_action:
+          action: perform-action
+          perform_action: androidtv.adb_command
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            command: POWER
+      - type: button
+        name: Vol -
+        icon: mdi:volume-minus
+        tap_action:
+          action: perform-action
+          perform_action: androidtv.adb_command
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            command: VOLUME_DOWN
+      - type: button
+        name: Mute
+        icon: mdi:volume-off
+        tap_action:
+          action: perform-action
+          perform_action: androidtv.adb_command
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            command: MUTE
+      - type: button
+        name: Vol +
+        icon: mdi:volume-plus
+        tap_action:
+          action: perform-action
+          perform_action: androidtv.adb_command
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            command: VOLUME_UP
+
+  # Navigation pad
+  - type: grid
+    columns: 3
+    square: false
+    cards:
+      - type: button
+        name: Back
+        icon: mdi:arrow-u-left-top
+        tap_action:
+          action: perform-action
+          perform_action: androidtv.adb_command
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            command: BACK
+      - type: button
+        name: Up
+        icon: mdi:chevron-up
+        tap_action:
+          action: perform-action
+          perform_action: androidtv.adb_command
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            command: UP
+      - type: button
+        name: Home
+        icon: mdi:home
+        tap_action:
+          action: perform-action
+          perform_action: androidtv.adb_command
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            command: HOME
+      - type: button
+        name: Left
+        icon: mdi:chevron-left
+        tap_action:
+          action: perform-action
+          perform_action: androidtv.adb_command
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            command: LEFT
+      - type: button
+        name: OK
+        icon: mdi:circle-outline
+        tap_action:
+          action: perform-action
+          perform_action: androidtv.adb_command
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            command: CENTER
+      - type: button
+        name: Right
+        icon: mdi:chevron-right
+        tap_action:
+          action: perform-action
+          perform_action: androidtv.adb_command
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            command: RIGHT
+      - type: button
+        name: Menu
+        icon: mdi:menu
+        tap_action:
+          action: perform-action
+          perform_action: androidtv.adb_command
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            command: MENU
+      - type: button
+        name: Down
+        icon: mdi:chevron-down
+        tap_action:
+          action: perform-action
+          perform_action: androidtv.adb_command
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            command: DOWN
+      - type: button
+        name: Settings
+        icon: mdi:cog
+        tap_action:
+          action: perform-action
+          perform_action: androidtv.adb_command
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            command: SETTINGS
+
+  # Playback
+  - type: grid
+    columns: 3
+    square: false
+    cards:
+      - type: button
+        name: Rewind
+        icon: mdi:rewind
+        tap_action:
+          action: perform-action
+          perform_action: androidtv.adb_command
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            command: REWIND
+      - type: button
+        name: Play/Pause
+        icon: mdi:play-pause
+        tap_action:
+          action: perform-action
+          perform_action: androidtv.adb_command
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            command: PLAY_PAUSE
+      - type: button
+        name: Forward
+        icon: mdi:fast-forward
+        tap_action:
+          action: perform-action
+          perform_action: androidtv.adb_command
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            command: FAST_FORWARD
+
+  # App shortcuts. The source is the Android app ID.
+  # Remove an app if it is not installed on the TV.
+  - type: grid
+    columns: 3
+    square: false
+    cards:
+      - type: button
+        name: Plex
+        icon: mdi:plex
+        tap_action:
+          action: perform-action
+          perform_action: media_player.select_source
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            source: com.plexapp.android
+      - type: button
+        name: YouTube
+        icon: mdi:youtube
+        tap_action:
+          action: perform-action
+          perform_action: media_player.select_source
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            source: com.google.android.youtube.tv
+      - type: button
+        name: Netflix
+        icon: mdi:netflix
+        tap_action:
+          action: perform-action
+          perform_action: media_player.select_source
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            source: com.netflix.ninja
