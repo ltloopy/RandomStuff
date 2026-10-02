@@ -7,56 +7,6 @@
 type: vertical-stack
 title: Living Room TV
 cards:
-  # Now playing, power and media buttons
-  - type: media-control
-    entity: media_player.livingroom_tv_androidtv_adb
-
-  # Power, volume and mute
-  - type: grid
-    columns: 4
-    square: false
-    cards:
-      - type: button
-        name: Power
-        icon: mdi:power
-        tap_action:
-          action: perform-action
-          perform_action: androidtv.adb_command
-          target:
-            entity_id: media_player.livingroom_tv_androidtv_adb
-          data:
-            command: POWER
-      - type: button
-        name: Vol -
-        icon: mdi:volume-minus
-        tap_action:
-          action: perform-action
-          perform_action: androidtv.adb_command
-          target:
-            entity_id: media_player.livingroom_tv_androidtv_adb
-          data:
-            command: VOLUME_DOWN
-      - type: button
-        name: Mute
-        icon: mdi:volume-off
-        tap_action:
-          action: perform-action
-          perform_action: androidtv.adb_command
-          target:
-            entity_id: media_player.livingroom_tv_androidtv_adb
-          data:
-            command: MUTE
-      - type: button
-        name: Vol +
-        icon: mdi:volume-plus
-        tap_action:
-          action: perform-action
-          perform_action: androidtv.adb_command
-          target:
-            entity_id: media_player.livingroom_tv_androidtv_adb
-          data:
-            command: VOLUME_UP
-
   # Navigation pad
   - type: grid
     columns: 3
@@ -153,11 +103,21 @@ cards:
           data:
             command: SETTINGS
 
-  # Playback
+  # Power and playback
   - type: grid
-    columns: 3
+    columns: 4
     square: false
     cards:
+      - type: button
+        name: Power
+        icon: mdi:power
+        tap_action:
+          action: perform-action
+          perform_action: androidtv.adb_command
+          target:
+            entity_id: media_player.livingroom_tv_androidtv_adb
+          data:
+            command: POWER
       - type: button
         name: Rewind
         icon: mdi:rewind

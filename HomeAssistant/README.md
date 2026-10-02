@@ -7,10 +7,8 @@ Living Room Android TV through the Android Debug Bridge (ADB) integration.
 
 The card has these parts:
 
-- A media control card (now playing, power, play and pause).
-- Power, volume down, mute and volume up buttons.
 - A navigation pad: Back, Home, Menu, Settings, the arrows and OK.
-- Rewind, play/pause and fast forward buttons.
+- Power, rewind, play/pause and fast forward buttons.
 - App shortcuts for Plex, YouTube and Netflix.
 
 The card uses only built-in cards. You do not need HACS.
@@ -31,7 +29,6 @@ The card uses only built-in cards. You do not need HACS.
 
 1. Select **Home** on the card. Make sure that the TV shows the home screen.
 2. Select the arrows and **OK**. Make sure that the TV cursor moves.
-3. Select **Vol +** and **Vol -**. Make sure that the volume changes.
 
 ### Troubleshooting
 
@@ -39,5 +36,3 @@ The card uses only built-in cards. You do not need HACS.
   Look at the `source_list` attribute of the entity in **Developer tools > States**.
   Use a value from this list as the `source`.
 - If no button operates, make sure that the entity state is not `unavailable`.
-- Some TVs ignore the `VOLUME_UP` and `VOLUME_DOWN` keys when the TV sends audio to an
-  external amplifier. Then, use the amplifier remote for volume.
